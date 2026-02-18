@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Payment records for milestone disbursements to grant recipients</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Milestone Payment</label>
+    <nameField>
+        <displayFormat>PAY-{000000}</displayFormat>
+        <label>Payment ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Milestone Payments</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    
+    <!-- Relationships -->
+    <fields>
+        <fullName>Project_Milestone__c</fullName>
+        <label>Project Milestone</label>
+        <referenceTo>Project_Milestone__c</referenceTo>
+        <relationshipLabel>Milestone Payments</relationshipLabel>
+        <relationshipName>Milestone_Payments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Grant_Recipient__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Grant Recipient</label>
+        <referenceTo>Grant_Recipient__c</referenceTo>
+        <relationshipLabel>Payments Received</relationshipLabel>
+        <relationshipName>Payments_Received</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    
+    <!-- Payment Details -->
+    <fields>
+        <fullName>Payment_Amount_USD__c</fullName>
+        <label>Payment Amount (USD)</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Amount_Crypto__c</fullName>
+        <label>Payment Amount (Crypto)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>8</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Crypto_Currency__c</fullName>
+        <label>Crypto Currency</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>JIL</fullName>
+                    <default>true</default>
+                    <label>JIL</label>
+                </value>
+                <value>
+                    <fullName>USDC</fullName>
+                    <default>false</default>
+                    <label>USDC</label>
+                </value>
+                <value>
+                    <fullName>USDT</fullName>
+                    <default>false</default>
+                    <label>USDT</label>
+                </value>
+                <value>
+                    <fullName>ETH</fullName>
+                    <default>false</default>
+                    <label>ETH</label>
+                </value>
+                <value>
+                    <fullName>BTC</fullName>
+                    <default>false</default>
+                    <label>BTC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Exchange_Rate__c</fullName>
+        <label>Exchange Rate (USD to Crypto)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>8</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Method__c</fullName>
+        <label>Payment Method</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Crypto Transfer</fullName>
+                    <default>true</default>
+                    <label>Crypto Transfer</label>
+                </value>
+                <value>
+                    <fullName>Wire Transfer</fullName>
+                    <default>false</default>
+                    <label>Wire Transfer</label>
+                </value>
+                <value>
+                    <fullName>ACH</fullName>
+                    <default>false</default>
+                    <label>ACH</label>
+                </value>
+                <value>
+                    <fullName>Check</fullName>
+                    <default>false</default>
+                    <label>Check</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    
+    <!-- Blockchain Details (for crypto payments) -->
+    <fields>
+        <fullName>Transaction_Hash__c</fullName>
+        <label>Transaction Hash</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+        <caseSensitive>true</caseSensitive>
+    </fields>
+    <fields>
+        <fullName>Blockchain_Network__c</fullName>
+        <label>Blockchain Network</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>JIL</fullName>
+                    <default>true</default>
+                    <label>JIL</label>
+                </value>
+                <value>
+                    <fullName>Ethereum</fullName>
+                    <default>false</default>
+                    <label>Ethereum</label>
+                </value>
+                <value>
+                    <fullName>Polygon</fullName>
+                    <default>false</default>
+                    <label>Polygon</label>
+                </value>
+                <value>
+                    <fullName>Solana</fullName>
+                    <default>false</default>
+                    <label>Solana</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>From_Wallet_Address__c</fullName>
+        <label>From Wallet Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>To_Wallet_Address__c</fullName>
+        <label>To Wallet Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Block_Number__c</fullName>
+        <label>Block Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Confirmations__c</fullName>
+        <label>Confirmations</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Bank/Traditional Payment Details -->
+    <fields>
+        <fullName>Bank_Reference_Number__c</fullName>
+        <label>Bank Reference Number</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Check_Number__c</fullName>
+        <label>Check Number</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Timing -->
+    <fields>
+        <fullName>Payment_Initiated_Date__c</fullName>
+        <label>Payment Initiated Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Completed_Date__c</fullName>
+        <label>Payment Completed Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    
+    <!-- Status -->
+    <fields>
+        <fullName>Payment_Status__c</fullName>
+        <label>Payment Status</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending Approval</fullName>
+                    <default>true</default>
+                    <label>Pending Approval</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Processing</fullName>
+                    <default>false</default>
+                    <label>Processing</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Refunded</fullName>
+                    <default>false</default>
+                    <label>Refunded</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    
+    <!-- Approval -->
+    <fields>
+        <fullName>Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approved_Payments</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Initiated_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Initiated By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Initiated_Payments</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    
+    <!-- Notes -->
+    <fields>
+        <fullName>Payment_Notes__c</fullName>
+        <label>Payment Notes</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Failure_Reason__c</fullName>
+        <label>Failure Reason</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+</CustomObject>

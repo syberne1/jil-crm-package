@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Limited access for Token Purchasers accessing through Experience Cloud portal. Restricted FLS hides Onfido internals, admin notes, and system rollup fields.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>JIL Token Purchaser Portal</label>
+    
+    <!-- ============================================ -->
+    <!-- OBJECT PERMISSIONS                           -->
+    <!-- ============================================ -->
+
+    <!-- Token Purchaser: Read/Edit own record -->
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Token_Purchaser__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <!-- Crypto Wallet: Can add/edit own wallets -->
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Crypto_Wallet__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <!-- Crypto Transaction: Read-only -->
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Crypto_Transaction__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Token_Purchaser__c        -->
+    <!-- Portal user: Edit own profile, read KYC      -->
+    <!-- status, NO Onfido internals/admin fields     -->
+    <!-- ============================================ -->
+
+    <!-- Personal info: Editable by owner -->
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.First_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Last_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Email__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Phone__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Date_of_Birth__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Country__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.State_Province__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.City__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Postal_Code__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Street_Address__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Portal fields: Read-only (system-managed) -->
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Portal_Username__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Portal_Access_Enabled__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Last_Portal_Login__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Portal_Registration_Date__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- KYC: Read-only status visible to user, Onfido internals HIDDEN -->
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.KYC_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.KYC_Expiration_Date__c</field><readable>true</readable></fieldPermissions>
+    <!-- DENIED: Onfido internal IDs, reports, webhook data, risk level -->
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Onfido_Applicant_ID__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Onfido_Check_ID__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Onfido_Check_Result__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Onfido_Check_Date__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Onfido_Document_Report_ID__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Onfido_Facial_Report_ID__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.KYC_Risk_Level__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Onfido_Webhook_Response__c</field><readable>false</readable></fieldPermissions>
+
+    <!-- Social handles: Editable by owner -->
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Twitter_Handle__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Discord_Handle__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Telegram_Handle__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.LinkedIn_URL__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.GitHub_Handle__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Token_Purchaser__c.Instagram_Handle__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Tier/Stats: Read-only, system-managed rollups -->
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.User_Tier__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Total_Purchase_Volume__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Total_Transactions__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.First_Purchase_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Last_Purchase_Date__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- DENIED: Admin-only fields -->
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Account_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Token_Purchaser__c.Notes__c</field><readable>false</readable></fieldPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Crypto_Wallet__c          -->
+    <!-- Portal user: Add/edit own wallets            -->
+    <!-- ============================================ -->
+    <fieldPermissions><editable>true</editable><field>Crypto_Wallet__c.Wallet_Address__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Crypto_Wallet__c.Wallet_Nickname__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Crypto_Wallet__c.Blockchain_Network__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Crypto_Wallet__c.Wallet_Type__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Crypto_Wallet__c.Is_Primary__c</field><readable>true</readable></fieldPermissions>
+    <!-- Verification: Read-only (admin-managed) -->
+    <fieldPermissions><editable>false</editable><field>Crypto_Wallet__c.Verification_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Wallet__c.Verification_Method__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Wallet__c.Verification_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Wallet__c.Date_Added__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Wallet__c.Last_Transaction_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Wallet__c.Transaction_Count__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Wallet__c.Notes__c</field><readable>false</readable></fieldPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Crypto_Transaction__c     -->
+    <!-- Portal user: Read-only on own transactions   -->
+    <!-- ============================================ -->
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Transaction_Hash__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Transaction_Type__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Token_Symbol__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Token_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Token_Amount__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.USD_Amount__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Price_Per_Token__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Transaction_Fee__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Gas_Fee__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Blockchain_Network__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Block_Number__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Transaction_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Confirmations__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Transaction_DateTime__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.From_Address__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.To_Address__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Payment_Method__c</field><readable>true</readable></fieldPermissions>
+    <!-- DENIED: Admin internal notes on transactions -->
+    <fieldPermissions><editable>false</editable><field>Crypto_Transaction__c.Notes__c</field><readable>false</readable></fieldPermissions>
+
+</PermissionSet>

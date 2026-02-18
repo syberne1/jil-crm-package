@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Token_Purchaser_Duplicate_Email</fullName>
+    <actionOnInsert>Allow</actionOnInsert>
+    <actionOnUpdate>Allow</actionOnUpdate>
+    <alertText>A Token Purchaser with this email address already exists. Please verify this is not a duplicate record before saving.</alertText>
+    <description>Alerts users when creating or editing a Token Purchaser that matches an existing record by email address</description>
+    <duplicateRuleFilter>
+        <booleanFilter>1</booleanFilter>
+        <duplicateRuleFilterItems>
+            <field>Account_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Token_Purchaser__c</matchRuleSObjectType>
+        <matchingRule>Token_Purchaser_Email_Match</matchingRule>
+    </duplicateRuleMatchRules>
+    <isActive>true</isActive>
+    <masterLabel>Token Purchaser Duplicate Email</masterLabel>
+    <objectName>Token_Purchaser__c</objectName>
+    <operationsOnInsert>Alert</operationsOnInsert>
+    <operationsOnUpdate>Alert</operationsOnUpdate>
+    <securityOption>EnforceSharingRules</securityOption>
+    <sortOrder>1</sortOrder>
+</DuplicateRule>

@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Individual grant-funded projects submitted by grant recipients</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Grant Project</label>
+    <nameField>
+        <displayFormat>PROJ-{0000}</displayFormat>
+        <label>Project ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Grant Projects</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    
+    <!-- Relationship to Grant Recipient (Master-Detail: C-4 fix) -->
+    <fields>
+        <fullName>Grant_Recipient__c</fullName>
+        <label>Grant Recipient</label>
+        <referenceTo>Grant_Recipient__c</referenceTo>
+        <relationshipLabel>Grant Projects</relationshipLabel>
+        <relationshipName>Grant_Projects</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    
+    <!-- Project Information -->
+    <fields>
+        <fullName>Project_Name__c</fullName>
+        <label>Project Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Description__c</fullName>
+        <label>Project Description</label>
+        <length>32768</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Project_Category__c</fullName>
+        <label>Project Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Education</fullName>
+                    <default>false</default>
+                    <label>Education</label>
+                </value>
+                <value>
+                    <fullName>Healthcare</fullName>
+                    <default>false</default>
+                    <label>Healthcare</label>
+                </value>
+                <value>
+                    <fullName>Environment</fullName>
+                    <default>false</default>
+                    <label>Environment</label>
+                </value>
+                <value>
+                    <fullName>Humanitarian Aid</fullName>
+                    <default>false</default>
+                    <label>Humanitarian Aid</label>
+                </value>
+                <value>
+                    <fullName>Economic Development</fullName>
+                    <default>false</default>
+                    <label>Economic Development</label>
+                </value>
+                <value>
+                    <fullName>Technology</fullName>
+                    <default>false</default>
+                    <label>Technology</label>
+                </value>
+                <value>
+                    <fullName>Community Development</fullName>
+                    <default>false</default>
+                    <label>Community Development</label>
+                </value>
+                <value>
+                    <fullName>Arts and Culture</fullName>
+                    <default>false</default>
+                    <label>Arts and Culture</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Geographic_Focus__c</fullName>
+        <label>Geographic Focus</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_Beneficiaries__c</fullName>
+        <label>Target Beneficiaries</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Expected_Impact__c</fullName>
+        <label>Expected Impact</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    
+    <!-- Funding Request -->
+    <fields>
+        <fullName>Total_Funds_Requested__c</fullName>
+        <label>Total Funds Requested (USD)</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Funds_Use_Plan__c</fullName>
+        <label>Funds Use Plan</label>
+        <length>32768</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Funding_Needed_By__c</fullName>
+        <label>Funding Needed By</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Total_Funds_Approved__c</fullName>
+        <label>Total Funds Approved (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Funds_Disbursed__c</fullName>
+        <label>Total Funds Disbursed (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Funds_Remaining__c</fullName>
+        <formula>Total_Funds_Approved__c - Total_Funds_Disbursed__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Funds Remaining (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    
+    <!-- Timeline -->
+    <fields>
+        <fullName>Project_Start_Date__c</fullName>
+        <label>Project Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Project_End_Date__c</fullName>
+        <label>Project End Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Project_Duration_Months__c</fullName>
+        <label>Project Duration (Months)</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Status -->
+    <fields>
+        <fullName>Project_Status__c</fullName>
+        <label>Project Status</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>true</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Under Review</fullName>
+                    <default>false</default>
+                    <label>Under Review</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>On Hold</fullName>
+                    <default>false</default>
+                    <label>On Hold</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Submission_Date__c</fullName>
+        <label>Submission Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approved_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    
+    <!-- Prior Projects Reference -->
+    <fields>
+        <fullName>Prior_Projects_Summary__c</fullName>
+        <label>Prior Projects Summary</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Prior_Projects_Evidence_Uploaded__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Prior Projects Evidence Uploaded</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    
+    <!-- Milestones Summary (Roll-up) -->
+    <fields>
+        <fullName>Total_Milestones__c</fullName>
+        <label>Total Milestones</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestones_Completed__c</fullName>
+        <label>Milestones Completed</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestone_Completion_Percentage__c</fullName>
+        <formula>IF(Total_Milestones__c > 0, (Milestones_Completed__c / Total_Milestones__c) * 100, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Milestone Completion %</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    
+    <!-- Review Notes -->
+    <fields>
+        <fullName>Review_Notes__c</fullName>
+        <label>Review Notes</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Rejection_Reason__c</fullName>
+        <label>Rejection Reason</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+
+    <!-- ============================================ -->
+    <!-- VALIDATION RULES                             -->
+    <!-- ============================================ -->
+
+    <!-- H-3: Prevent edits to key fields after project approval -->
+    <validationRules>
+        <fullName>Prevent_Edit_After_Approval</fullName>
+        <active>true</active>
+        <description>Prevents changes to funding, use plan, and project name after project is approved, in progress, or completed. Admins with JIL_CRM_Admin permission set are exempt.</description>
+        <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(PRIORVALUE(Project_Status__c), "Approved"),
+        ISPICKVAL(PRIORVALUE(Project_Status__c), "In Progress"),
+        ISPICKVAL(PRIORVALUE(Project_Status__c), "Completed")
+    ),
+    OR(
+        ISCHANGED(Total_Funds_Requested__c),
+        ISCHANGED(Funds_Use_Plan__c),
+        ISCHANGED(Project_Name__c),
+        ISCHANGED(Project_Description__c),
+        ISCHANGED(Funding_Needed_By__c)
+    ),
+    NOT($Permission.JIL_CRM_Admin)
+)</errorConditionFormula>
+        <errorMessage>Cannot modify funding amount, use plan, or project details after approval. Please contact your grant administrator if changes are needed.</errorMessage>
+    </validationRules>
+
+</CustomObject>

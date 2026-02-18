@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <matchingRules>
+        <fullName>Grant_Recipient_EIN_Match</fullName>
+        <label>Grant Recipient EIN Match</label>
+        <description>Matches Grant Recipient records by exact EIN</description>
+        <ruleStatus>Active</ruleStatus>
+        <matchingRuleItems>
+            <fieldName>EIN__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+        </matchingRuleItems>
+    </matchingRules>
+    <matchingRules>
+        <fullName>Grant_Recipient_OrgName_Match</fullName>
+        <label>Grant Recipient Organization Name Match</label>
+        <description>Matches Grant Recipient records by fuzzy organization name within the same country</description>
+        <ruleStatus>Active</ruleStatus>
+        <matchingRuleItems>
+            <fieldName>Organization_Name__c</fieldName>
+            <matchingMethod>Fuzzy</matchingMethod>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <fieldName>Country__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+        </matchingRuleItems>
+    </matchingRules>
+</MatchingRules>

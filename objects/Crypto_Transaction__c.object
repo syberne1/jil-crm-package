@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Crypto transactions made on the JIL platform</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Crypto Transaction</label>
+    <nameField>
+        <displayFormat>TX-{000000}</displayFormat>
+        <label>Transaction ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Crypto Transactions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    
+    <!-- Relationships -->
+    <fields>
+        <fullName>Token_Purchaser__c</fullName>
+        <label>Token Purchaser</label>
+        <referenceTo>Token_Purchaser__c</referenceTo>
+        <relationshipLabel>Crypto Transactions</relationshipLabel>
+        <relationshipName>Crypto_Transactions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Wallet__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <label>Wallet</label>
+        <referenceTo>Crypto_Wallet__c</referenceTo>
+        <relationshipLabel>Transactions</relationshipLabel>
+        <relationshipName>Transactions</relationshipName>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    
+    <!-- Transaction Details -->
+    <fields>
+        <fullName>Transaction_Hash__c</fullName>
+        <label>Transaction Hash</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+        <caseSensitive>true</caseSensitive>
+    </fields>
+    <fields>
+        <fullName>Transaction_Type__c</fullName>
+        <label>Transaction Type</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Purchase</fullName>
+                    <default>true</default>
+                    <label>Purchase</label>
+                </value>
+                <value>
+                    <fullName>Sale</fullName>
+                    <default>false</default>
+                    <label>Sale</label>
+                </value>
+                <value>
+                    <fullName>Transfer In</fullName>
+                    <default>false</default>
+                    <label>Transfer In</label>
+                </value>
+                <value>
+                    <fullName>Transfer Out</fullName>
+                    <default>false</default>
+                    <label>Transfer Out</label>
+                </value>
+                <value>
+                    <fullName>Swap</fullName>
+                    <default>false</default>
+                    <label>Swap</label>
+                </value>
+                <value>
+                    <fullName>Stake</fullName>
+                    <default>false</default>
+                    <label>Stake</label>
+                </value>
+                <value>
+                    <fullName>Unstake</fullName>
+                    <default>false</default>
+                    <label>Unstake</label>
+                </value>
+                <value>
+                    <fullName>Reward</fullName>
+                    <default>false</default>
+                    <label>Reward</label>
+                </value>
+                <value>
+                    <fullName>Airdrop</fullName>
+                    <default>false</default>
+                    <label>Airdrop</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Token_Symbol__c</fullName>
+        <label>Token Symbol</label>
+        <length>20</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Token_Name__c</fullName>
+        <label>Token Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Token_Amount__c</fullName>
+        <label>Token Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>8</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>USD_Amount__c</fullName>
+        <label>USD Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Price_Per_Token__c</fullName>
+        <label>Price Per Token (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>8</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Transaction_Fee__c</fullName>
+        <label>Transaction Fee (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Gas_Fee__c</fullName>
+        <label>Gas Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>8</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blockchain_Network__c</fullName>
+        <label>Blockchain Network</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>JIL</fullName>
+                    <default>true</default>
+                    <label>JIL</label>
+                </value>
+                <value>
+                    <fullName>Ethereum</fullName>
+                    <default>false</default>
+                    <label>Ethereum</label>
+                </value>
+                <value>
+                    <fullName>Bitcoin</fullName>
+                    <default>false</default>
+                    <label>Bitcoin</label>
+                </value>
+                <value>
+                    <fullName>Solana</fullName>
+                    <default>false</default>
+                    <label>Solana</label>
+                </value>
+                <value>
+                    <fullName>Polygon</fullName>
+                    <default>false</default>
+                    <label>Polygon</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Block_Number__c</fullName>
+        <label>Block Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transaction_Status__c</fullName>
+        <label>Transaction Status</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>true</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Confirmed</fullName>
+                    <default>false</default>
+                    <label>Confirmed</label>
+                </value>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Confirmations__c</fullName>
+        <label>Confirmations</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transaction_DateTime__c</fullName>
+        <label>Transaction Date/Time</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>From_Address__c</fullName>
+        <label>From Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>To_Address__c</fullName>
+        <label>To Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Method__c</fullName>
+        <label>Payment Method</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Credit Card</fullName>
+                    <default>false</default>
+                    <label>Credit Card</label>
+                </value>
+                <value>
+                    <fullName>Debit Card</fullName>
+                    <default>false</default>
+                    <label>Debit Card</label>
+                </value>
+                <value>
+                    <fullName>Bank Transfer</fullName>
+                    <default>false</default>
+                    <label>Bank Transfer</label>
+                </value>
+                <value>
+                    <fullName>Wire Transfer</fullName>
+                    <default>false</default>
+                    <label>Wire Transfer</label>
+                </value>
+                <value>
+                    <fullName>Crypto</fullName>
+                    <default>true</default>
+                    <label>Crypto</label>
+                </value>
+                <value>
+                    <fullName>ACH</fullName>
+                    <default>false</default>
+                    <label>ACH</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <label>Notes</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+
+    <!-- ============================================ -->
+    <!-- VALIDATION RULES: Transaction Hash Format    -->
+    <!-- ============================================ -->
+
+    <!-- EVM chains (Ethereum, Polygon, JIL): 0x + 64 hex chars (66 total) -->
+    <validationRules>
+        <fullName>EVM_Transaction_Hash_Format</fullName>
+        <active>true</active>
+        <description>Validates transaction hash format for EVM-compatible chains (Ethereum, Polygon, JIL). Must be 0x prefix followed by exactly 64 hexadecimal characters.</description>
+        <errorConditionFormula>AND(
+    NOT(ISBLANK(Transaction_Hash__c)),
+    OR(
+        ISPICKVAL(Blockchain_Network__c, "Ethereum"),
+        ISPICKVAL(Blockchain_Network__c, "Polygon"),
+        ISPICKVAL(Blockchain_Network__c, "JIL")
+    ),
+    NOT(REGEX(Transaction_Hash__c, "^0x[0-9a-fA-F]{64}$"))
+)</errorConditionFormula>
+        <errorDisplayField>Transaction_Hash__c</errorDisplayField>
+        <errorMessage>Transaction hash must be a valid EVM format: 0x followed by exactly 64 hexadecimal characters (e.g., 0x1a2b3c...). Please copy the exact hash from the blockchain explorer.</errorMessage>
+    </validationRules>
+
+    <!-- Bitcoin: 64 hex chars (no 0x prefix) -->
+    <validationRules>
+        <fullName>Bitcoin_Transaction_Hash_Format</fullName>
+        <active>true</active>
+        <description>Validates Bitcoin transaction hash (TXID). Must be exactly 64 hexadecimal characters without a 0x prefix.</description>
+        <errorConditionFormula>AND(
+    NOT(ISBLANK(Transaction_Hash__c)),
+    ISPICKVAL(Blockchain_Network__c, "Bitcoin"),
+    NOT(REGEX(Transaction_Hash__c, "^[0-9a-fA-F]{64}$"))
+)</errorConditionFormula>
+        <errorDisplayField>Transaction_Hash__c</errorDisplayField>
+        <errorMessage>Bitcoin transaction hash must be exactly 64 hexadecimal characters without a 0x prefix. Please copy the exact TXID from the blockchain explorer.</errorMessage>
+    </validationRules>
+
+    <!-- Solana: Base58 encoded, 87-88 characters -->
+    <validationRules>
+        <fullName>Solana_Transaction_Hash_Format</fullName>
+        <active>true</active>
+        <description>Validates Solana transaction signature. Must be 87-88 base58 characters (alphanumeric excluding 0, O, I, l).</description>
+        <errorConditionFormula>AND(
+    NOT(ISBLANK(Transaction_Hash__c)),
+    ISPICKVAL(Blockchain_Network__c, "Solana"),
+    NOT(REGEX(Transaction_Hash__c, "^[1-9A-HJ-NP-Za-km-z]{87,88}$"))
+)</errorConditionFormula>
+        <errorDisplayField>Transaction_Hash__c</errorDisplayField>
+        <errorMessage>Solana transaction signature must be 87-88 base58 characters. Please copy the exact signature from Solana Explorer.</errorMessage>
+    </validationRules>
+
+</CustomObject>

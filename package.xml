@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Token_Purchaser__c</members>
+        <members>Crypto_Wallet__c</members>
+        <members>Crypto_Transaction__c</members>
+        <members>Grant_Recipient__c</members>
+        <members>Organization_Document__c</members>
+        <members>Grant_Project__c</members>
+        <members>Project_Milestone__c</members>
+        <members>Milestone_Documentation__c</members>
+        <members>Milestone_Payment__c</members>
+        <n>CustomObject</n>
+    </types>
+    <types>
+        <members>Token_Purchaser__c.Token_Purchaser_Email_Match</members>
+        <members>Grant_Recipient__c.Grant_Recipient_EIN_Match</members>
+        <n>MatchingRule</n>
+    </types>
+    <types>
+        <members>Token_Purchaser_Duplicate_Email</members>
+        <members>Grant_Recipient_Duplicate</members>
+        <n>DuplicateRule</n>
+    </types>
+    <types>
+        <members>JIL_CRM_Admin</members>
+        <members>JIL_Grant_Recipient_Portal</members>
+        <members>JIL_Token_Purchaser_Portal</members>
+        <n>PermissionSet</n>
+    </types>
+    <version>59.0</version>
+</Package>

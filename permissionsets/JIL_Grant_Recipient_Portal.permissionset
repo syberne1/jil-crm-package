@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Limited access for Grant Recipients accessing through Experience Cloud portal. Can view/edit own org profile, submit projects and documentation, view payment status. Onfido internals, admin vetting notes, and review fields are hidden.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>JIL Grant Recipient Portal</label>
+    
+    <!-- ============================================ -->
+    <!-- OBJECT PERMISSIONS                           -->
+    <!-- ============================================ -->
+
+    <!-- Grant Recipient: Read/Edit own record -->
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Grant_Recipient__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <!-- Organization Document: Can upload docs -->
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Organization_Document__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <!-- Grant Project: Can create and edit own projects -->
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Grant_Project__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <!-- Project Milestone: Read-only -->
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Project_Milestone__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <!-- Milestone Documentation: Can upload -->
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Milestone_Documentation__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <!-- Milestone Payment: Read-only to view payment status -->
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Milestone_Payment__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Grant_Recipient__c        -->
+    <!-- Portal user: Edit org profile, read KYC/     -->
+    <!-- vetting status, NO Onfido/admin internals    -->
+    <!-- ============================================ -->
+
+    <!-- Organization info: Editable by owner -->
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Organization_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Organization_DBA__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Is_Grant_Applicant__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Organization_Type__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Mission_Statement__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Year_Founded__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Years_In_Operation__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Annual_Budget__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Number_of_Employees__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Website__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Tax/Legal: Editable during application, read-only once submitted -->
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.EIN__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Tax_Exempt_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.IRS_Determination_Letter_Received__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.State_Registration_State__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.State_AP205_Received__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.State_Registration_Number__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Tax_Returns_Year_1_Received__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Tax_Returns_Year_2_Received__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Tax_Return_Year_1__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Tax_Return_Year_2__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Address: Editable -->
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Street_Address__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.City__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.State_Province__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Postal_Code__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Country__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Primary Contact: Editable -->
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Primary_Contact_First_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Primary_Contact_Last_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Primary_Contact_Title__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Primary_Contact_Email__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Primary_Contact_Phone__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Portal: Read-only (system-managed) -->
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Portal_Username__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Portal_Access_Enabled__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Last_Portal_Login__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- KYC: Read-only status, Onfido internals HIDDEN -->
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.KYC_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Onfido_Applicant_ID__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Onfido_Check_ID__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Onfido_Check_Result__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Onfido_Check_Date__c</field><readable>false</readable></fieldPermissions>
+
+    <!-- Social handles: Editable -->
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Twitter_Handle__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Facebook_URL__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.LinkedIn_URL__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Instagram_Handle__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Vetting: Read-only status, admin notes HIDDEN -->
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Vetting_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Vetting_Notes__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Vetting_Completed_Date__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Disbursement wallet: Editable by recipient -->
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Disbursement_Wallet_Address__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Recipient__c.Disbursement_Wallet_Network__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Aggregates: Read-only -->
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Total_Grants_Received__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Active_Projects_Count__c</field><readable>true</readable></fieldPermissions>
+    <!-- DENIED: Admin notes -->
+    <fieldPermissions><editable>false</editable><field>Grant_Recipient__c.Notes__c</field><readable>false</readable></fieldPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Organization_Document__c  -->
+    <!-- Portal user: Can create docs, read status    -->
+    <!-- ============================================ -->
+    <fieldPermissions><editable>true</editable><field>Organization_Document__c.Document_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Organization_Document__c.Document_Type__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Organization_Document__c.Document_Year__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Organization_Document__c.Description__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Organization_Document__c.File_URL__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Organization_Document__c.ContentVersion_ID__c</field><readable>true</readable></fieldPermissions>
+    <!-- Review fields: Read-only (admin-managed) -->
+    <fieldPermissions><editable>false</editable><field>Organization_Document__c.Review_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Organization_Document__c.Review_Notes__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Organization_Document__c.Review_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Organization_Document__c.Upload_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Organization_Document__c.Expiration_Date__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Grant_Project__c          -->
+    <!-- Portal user: Edit project details, read      -->
+    <!-- admin review/approval fields                 -->
+    <!-- ============================================ -->
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Project_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Project_Description__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Project_Category__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Geographic_Focus__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Target_Beneficiaries__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Expected_Impact__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Total_Funds_Requested__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Funds_Use_Plan__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Funding_Needed_By__c</field><readable>true</readable></fieldPermissions>
+    <!-- Admin-managed financial/status fields: Read-only -->
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Total_Funds_Approved__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Total_Funds_Disbursed__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Project_Start_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Project_End_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Project_Duration_Months__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Project_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Submission_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Approval_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Prior_Projects_Summary__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Grant_Project__c.Prior_Projects_Evidence_Uploaded__c</field><readable>true</readable></fieldPermissions>
+    <!-- Rollup fields: Read-only -->
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Total_Milestones__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Milestones_Completed__c</field><readable>true</readable></fieldPermissions>
+    <!-- DENIED: Admin review internals -->
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Review_Notes__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Rejection_Reason__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Milestone_Completion_Percentage__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Grant_Project__c.Funds_Remaining__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Project_Milestone__c      -->
+    <!-- Portal user: Read-only on milestones         -->
+    <!-- ============================================ -->
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Milestone_Name__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Milestone_Number__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Description__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Deliverables__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Success_Criteria__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Funds_Requested__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Funds_Approved__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Percentage_of_Total__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Target_Start_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Target_Completion_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Funds_Needed_By__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Actual_Start_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Actual_Completion_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Milestone_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Documentation_Required__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Documentation_Uploaded__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Documentation_Upload_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Documentation_Approved__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Documentation_Approved_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Payment_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Payment_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Payment_Amount__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Payment_Transaction_ID__c</field><readable>true</readable></fieldPermissions>
+    <!-- DENIED: Admin notes -->
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Admin_Notes__c</field><readable>false</readable></fieldPermissions>
+    <!-- Recipient notes: Readable (they wrote it) -->
+    <fieldPermissions><editable>false</editable><field>Project_Milestone__c.Recipient_Notes__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Milestone_Documentation__c-->
+    <!-- Portal user: Can create docs, read review    -->
+    <!-- ============================================ -->
+    <fieldPermissions><editable>true</editable><field>Milestone_Documentation__c.Document_Title__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Milestone_Documentation__c.Document_Type__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Milestone_Documentation__c.Description__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Milestone_Documentation__c.File_URL__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Milestone_Documentation__c.ContentVersion_ID__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Documentation__c.Upload_Date__c</field><readable>true</readable></fieldPermissions>
+    <!-- Review: Read-only status, admin notes HIDDEN -->
+    <fieldPermissions><editable>false</editable><field>Milestone_Documentation__c.Review_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Documentation__c.Review_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Documentation__c.Review_Notes__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Documentation__c.Revision_Request__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Documentation__c.Uploaded_By__c</field><readable>true</readable></fieldPermissions>
+    <!-- Reviewed_By: DENIED (admin internal) -->
+    <fieldPermissions><editable>false</editable><field>Milestone_Documentation__c.Reviewed_By__c</field><readable>false</readable></fieldPermissions>
+
+    <!-- ============================================ -->
+    <!-- FIELD PERMISSIONS: Milestone_Payment__c      -->
+    <!-- Portal user: Read-only payment status, NO    -->
+    <!-- access to internal wallet/bank details       -->
+    <!-- ============================================ -->
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Payment_Amount_USD__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Payment_Amount_Crypto__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Crypto_Currency__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Exchange_Rate__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Payment_Method__c</field><readable>true</readable></fieldPermissions>
+    <!-- Blockchain: Read TX hash (they can verify), hide source wallet -->
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Transaction_Hash__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Blockchain_Network__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.From_Wallet_Address__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.To_Wallet_Address__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Block_Number__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Confirmations__c</field><readable>true</readable></fieldPermissions>
+    <!-- DENIED: Internal bank/check details -->
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Bank_Reference_Number__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Check_Number__c</field><readable>false</readable></fieldPermissions>
+    <!-- Timing: Read-only -->
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Payment_Initiated_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Payment_Completed_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Payment_Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Approval_Date__c</field><readable>true</readable></fieldPermissions>
+    <!-- DENIED: Admin payment notes and failure reasons -->
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Payment_Notes__c</field><readable>false</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>Milestone_Payment__c.Failure_Reason__c</field><readable>false</readable></fieldPermissions>
+
+</PermissionSet>

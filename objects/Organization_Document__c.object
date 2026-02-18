@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Documents uploaded by grant recipients for vetting (tax returns, IRS letters, state registrations, etc.)</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Organization Document</label>
+    <nameField>
+        <displayFormat>DOC-{000000}</displayFormat>
+        <label>Document ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Organization Documents</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    
+    <!-- Relationship (Master-Detail: C-4 fix) -->
+    <fields>
+        <fullName>Grant_Recipient__c</fullName>
+        <label>Grant Recipient</label>
+        <referenceTo>Grant_Recipient__c</referenceTo>
+        <relationshipLabel>Organization Documents</relationshipLabel>
+        <relationshipName>Organization_Documents</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    
+    <!-- Document Information -->
+    <fields>
+        <fullName>Document_Name__c</fullName>
+        <label>Document Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Document_Type__c</fullName>
+        <label>Document Type</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>IRS Determination Letter</fullName>
+                    <default>false</default>
+                    <label>IRS 501(c)(3) Determination Letter</label>
+                </value>
+                <value>
+                    <fullName>State AP205</fullName>
+                    <default>false</default>
+                    <label>State AP205/Equivalent</label>
+                </value>
+                <value>
+                    <fullName>Tax Return</fullName>
+                    <default>false</default>
+                    <label>Tax Return (Form 990)</label>
+                </value>
+                <value>
+                    <fullName>Articles of Incorporation</fullName>
+                    <default>false</default>
+                    <label>Articles of Incorporation</label>
+                </value>
+                <value>
+                    <fullName>Bylaws</fullName>
+                    <default>false</default>
+                    <label>Bylaws</label>
+                </value>
+                <value>
+                    <fullName>Board Resolution</fullName>
+                    <default>false</default>
+                    <label>Board Resolution</label>
+                </value>
+                <value>
+                    <fullName>Annual Report</fullName>
+                    <default>false</default>
+                    <label>Annual Report</label>
+                </value>
+                <value>
+                    <fullName>Financial Statement</fullName>
+                    <default>false</default>
+                    <label>Financial Statement</label>
+                </value>
+                <value>
+                    <fullName>Audit Report</fullName>
+                    <default>false</default>
+                    <label>Audit Report</label>
+                </value>
+                <value>
+                    <fullName>Prior Project Documentation</fullName>
+                    <default>false</default>
+                    <label>Prior Project Documentation</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Document_Year__c</fullName>
+        <label>Document Year</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <label>Description</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>File_URL__c</fullName>
+        <label>File URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>ContentVersion_ID__c</fullName>
+        <label>ContentVersion ID</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Review Status -->
+    <fields>
+        <fullName>Review_Status__c</fullName>
+        <label>Review Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending Review</fullName>
+                    <default>true</default>
+                    <label>Pending Review</label>
+                </value>
+                <value>
+                    <fullName>Under Review</fullName>
+                    <default>false</default>
+                    <label>Under Review</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Needs Resubmission</fullName>
+                    <default>false</default>
+                    <label>Needs Resubmission</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Review_Notes__c</fullName>
+        <label>Review Notes</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reviewed_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Reviewed By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Documents_Reviewed</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Review_Date__c</fullName>
+        <label>Review Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Upload_Date__c</fullName>
+        <label>Upload Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Expiration_Date__c</fullName>
+        <label>Expiration Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+</CustomObject>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Crypto wallet addresses associated with Token Purchasers</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Crypto Wallet</label>
+    <nameField>
+        <displayFormat>WALLET-{0000}</displayFormat>
+        <label>Wallet ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Crypto Wallets</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    
+    <!-- Relationship to Token Purchaser (Master-Detail: C-4 fix) -->
+    <fields>
+        <fullName>Token_Purchaser__c</fullName>
+        <label>Token Purchaser</label>
+        <referenceTo>Token_Purchaser__c</referenceTo>
+        <relationshipLabel>Crypto Wallets</relationshipLabel>
+        <relationshipName>Crypto_Wallets</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    
+    <!-- Wallet Information -->
+    <fields>
+        <fullName>Wallet_Address__c</fullName>
+        <label>Wallet Address</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+        <caseSensitive>true</caseSensitive>
+    </fields>
+    <fields>
+        <fullName>Wallet_Nickname__c</fullName>
+        <label>Wallet Nickname</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blockchain_Network__c</fullName>
+        <label>Blockchain Network</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>JIL</fullName>
+                    <default>true</default>
+                    <label>JIL</label>
+                </value>
+                <value>
+                    <fullName>Ethereum</fullName>
+                    <default>false</default>
+                    <label>Ethereum</label>
+                </value>
+                <value>
+                    <fullName>Bitcoin</fullName>
+                    <default>false</default>
+                    <label>Bitcoin</label>
+                </value>
+                <value>
+                    <fullName>Solana</fullName>
+                    <default>false</default>
+                    <label>Solana</label>
+                </value>
+                <value>
+                    <fullName>Polygon</fullName>
+                    <default>false</default>
+                    <label>Polygon</label>
+                </value>
+                <value>
+                    <fullName>Avalanche</fullName>
+                    <default>false</default>
+                    <label>Avalanche</label>
+                </value>
+                <value>
+                    <fullName>BNB Chain</fullName>
+                    <default>false</default>
+                    <label>BNB Chain</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Wallet_Type__c</fullName>
+        <label>Wallet Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hot Wallet</fullName>
+                    <default>true</default>
+                    <label>Hot Wallet</label>
+                </value>
+                <value>
+                    <fullName>Cold Wallet</fullName>
+                    <default>false</default>
+                    <label>Cold Wallet</label>
+                </value>
+                <value>
+                    <fullName>Hardware Wallet</fullName>
+                    <default>false</default>
+                    <label>Hardware Wallet</label>
+                </value>
+                <value>
+                    <fullName>Exchange Wallet</fullName>
+                    <default>false</default>
+                    <label>Exchange Wallet</label>
+                </value>
+                <value>
+                    <fullName>Custodial</fullName>
+                    <default>false</default>
+                    <label>Custodial</label>
+                </value>
+                <value>
+                    <fullName>Multi-Sig</fullName>
+                    <default>false</default>
+                    <label>Multi-Sig</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_Primary__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Is Primary Wallet</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Verification_Status__c</fullName>
+        <label>Verification Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Unverified</fullName>
+                    <default>true</default>
+                    <label>Unverified</label>
+                </value>
+                <value>
+                    <fullName>Pending Verification</fullName>
+                    <default>false</default>
+                    <label>Pending Verification</label>
+                </value>
+                <value>
+                    <fullName>Verified</fullName>
+                    <default>false</default>
+                    <label>Verified</label>
+                </value>
+                <value>
+                    <fullName>Flagged</fullName>
+                    <default>false</default>
+                    <label>Flagged</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Verification_Method__c</fullName>
+        <label>Verification Method</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Verification_Date__c</fullName>
+        <label>Verification Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Date_Added__c</fullName>
+        <label>Date Added</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Last_Transaction_Date__c</fullName>
+        <label>Last Transaction Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Transaction_Count__c</fullName>
+        <label>Transaction Count</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <label>Notes</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+
+    <!-- ============================================ -->
+    <!-- VALIDATION RULES: Wallet Address Format      -->
+    <!-- ============================================ -->
+
+    <!-- Ethereum & EVM-compatible chains: 0x + 40 hex chars (42 total) -->
+    <validationRules>
+        <fullName>Ethereum_Wallet_Address_Format</fullName>
+        <active>true</active>
+        <description>Validates that Ethereum, Polygon, Avalanche, BNB Chain, and JIL wallet addresses match the 0x-prefixed hex format (0x followed by exactly 40 hexadecimal characters).</description>
+        <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(Blockchain_Network__c, "Ethereum"),
+        ISPICKVAL(Blockchain_Network__c, "Polygon"),
+        ISPICKVAL(Blockchain_Network__c, "Avalanche"),
+        ISPICKVAL(Blockchain_Network__c, "BNB Chain"),
+        ISPICKVAL(Blockchain_Network__c, "JIL")
+    ),
+    NOT(REGEX(Wallet_Address__c, "^0x[0-9a-fA-F]{40}$"))
+)</errorConditionFormula>
+        <errorDisplayField>Wallet_Address__c</errorDisplayField>
+        <errorMessage>Wallet address must be a valid EVM address: 0x followed by exactly 40 hexadecimal characters (e.g., 0x1a2B3c4D5e6F...). Please verify the address from your wallet provider.</errorMessage>
+    </validationRules>
+
+    <!-- Bitcoin: Legacy (1...), P2SH (3...), or Bech32 (bc1...) formats -->
+    <validationRules>
+        <fullName>Bitcoin_Wallet_Address_Format</fullName>
+        <active>true</active>
+        <description>Validates Bitcoin wallet addresses: Legacy (1 + 25-33 base58), P2SH (3 + 25-33 base58), or Bech32/Bech32m (bc1 + 39-59 alphanumeric, no uppercase beyond prefix).</description>
+        <errorConditionFormula>AND(
+    ISPICKVAL(Blockchain_Network__c, "Bitcoin"),
+    NOT(
+        OR(
+            REGEX(Wallet_Address__c, "^1[1-9A-HJ-NP-Za-km-z]{25,33}$"),
+            REGEX(Wallet_Address__c, "^3[1-9A-HJ-NP-Za-km-z]{25,33}$"),
+            REGEX(Wallet_Address__c, "^bc1[0-9a-z]{39,59}$")
+        )
+    )
+)</errorConditionFormula>
+        <errorDisplayField>Wallet_Address__c</errorDisplayField>
+        <errorMessage>Bitcoin address must be a valid format: Legacy (starts with 1), P2SH (starts with 3), or Bech32 (starts with bc1). Please verify the address from your wallet provider.</errorMessage>
+    </validationRules>
+
+    <!-- Solana: Base58 encoded, 32-44 characters -->
+    <validationRules>
+        <fullName>Solana_Wallet_Address_Format</fullName>
+        <active>true</active>
+        <description>Validates Solana wallet addresses: 32-44 base58 characters (alphanumeric excluding 0, O, I, l).</description>
+        <errorConditionFormula>AND(
+    ISPICKVAL(Blockchain_Network__c, "Solana"),
+    NOT(REGEX(Wallet_Address__c, "^[1-9A-HJ-NP-Za-km-z]{32,44}$"))
+)</errorConditionFormula>
+        <errorDisplayField>Wallet_Address__c</errorDisplayField>
+        <errorMessage>Solana address must be 32-44 base58 characters. Please verify the address from your wallet provider.</errorMessage>
+    </validationRules>
+
+</CustomObject>

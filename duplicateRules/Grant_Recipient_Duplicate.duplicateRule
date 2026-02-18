@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grant_Recipient_Duplicate</fullName>
+    <actionOnInsert>Allow</actionOnInsert>
+    <actionOnUpdate>Allow</actionOnUpdate>
+    <alertText>A Grant Recipient with this EIN or a similar organization name already exists. Please verify this is not a duplicate record before saving.</alertText>
+    <description>Alerts users when creating or editing a Grant Recipient that matches by EIN or similar organization name in the same country</description>
+    <duplicateRuleFilter>
+        <booleanFilter>1</booleanFilter>
+        <duplicateRuleFilterItems>
+            <field>Vetting_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Rejected</value>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Grant_Recipient__c</matchRuleSObjectType>
+        <matchingRule>Grant_Recipient_EIN_Match</matchingRule>
+    </duplicateRuleMatchRules>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Grant_Recipient__c</matchRuleSObjectType>
+        <matchingRule>Grant_Recipient_OrgName_Match</matchingRule>
+    </duplicateRuleMatchRules>
+    <isActive>true</isActive>
+    <masterLabel>Grant Recipient Duplicate</masterLabel>
+    <objectName>Grant_Recipient__c</objectName>
+    <operationsOnInsert>Alert</operationsOnInsert>
+    <operationsOnUpdate>Alert</operationsOnUpdate>
+    <securityOption>EnforceSharingRules</securityOption>
+    <sortOrder>1</sortOrder>
+</DuplicateRule>

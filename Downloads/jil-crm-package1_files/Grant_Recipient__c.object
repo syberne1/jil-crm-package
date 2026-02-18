@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Grant recipient organization profile - 501(c)(3) nonprofits applying for grants</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>Grant Recipient</label>
+    <nameField>
+        <displayFormat>GR-{0000}</displayFormat>
+        <label>Grant Recipient ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Grant Recipients</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+    
+    <!-- Organization Information -->
+    <fields>
+        <fullName>Organization_Name__c</fullName>
+        <label>Organization Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Organization_DBA__c</fullName>
+        <label>DBA (Doing Business As)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Grant_Applicant__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>Applying for Grant</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Organization_Type__c</fullName>
+        <label>Organization Type</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>501(c)(3) Nonprofit</fullName>
+                    <default>true</default>
+                    <label>501(c)(3) Nonprofit</label>
+                </value>
+                <value>
+                    <fullName>501(c)(4) Social Welfare</fullName>
+                    <default>false</default>
+                    <label>501(c)(4) Social Welfare</label>
+                </value>
+                <value>
+                    <fullName>International NGO</fullName>
+                    <default>false</default>
+                    <label>International NGO</label>
+                </value>
+                <value>
+                    <fullName>Charitable Trust</fullName>
+                    <default>false</default>
+                    <label>Charitable Trust</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Mission_Statement__c</fullName>
+        <label>Mission Statement</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Year_Founded__c</fullName>
+        <label>Year Founded</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Years_In_Operation__c</fullName>
+        <label>Years In Operation</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Annual_Budget__c</fullName>
+        <label>Annual Budget</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Employees__c</fullName>
+        <label>Number of Employees</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Website__c</fullName>
+        <label>Website</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    
+    <!-- Tax Status & Legal Information -->
+    <fields>
+        <fullName>EIN__c</fullName>
+        <label>EIN (Employer Identification Number)</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tax_Exempt_Status__c</fullName>
+        <label>Tax Exempt Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>true</default>
+                    <label>Pending Verification</label>
+                </value>
+                <value>
+                    <fullName>Verified</fullName>
+                    <default>false</default>
+                    <label>Verified</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Expired</fullName>
+                    <default>false</default>
+                    <label>Expired</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IRS_Determination_Letter_Received__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>501(c)(3) IRS Determination Letter Received</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>State_Registration_State__c</fullName>
+        <label>State of Registration</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_AP205_Received__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>State AP205/Equivalent Received</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>State_Registration_Number__c</fullName>
+        <label>State Registration Number</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tax_Returns_Year_1_Received__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Tax Return (Year 1) Received</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Tax_Returns_Year_2_Received__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Tax Return (Year 2) Received</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Tax_Return_Year_1__c</fullName>
+        <label>Tax Return Year 1</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tax_Return_Year_2__c</fullName>
+        <label>Tax Return Year 2</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Address Information -->
+    <fields>
+        <fullName>Street_Address__c</fullName>
+        <label>Street Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <label>City</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_Province__c</fullName>
+        <label>State/Province</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Postal_Code__c</fullName>
+        <label>Postal Code</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <label>Country</label>
+        <length>100</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Primary Contact Information -->
+    <fields>
+        <fullName>Primary_Contact_First_Name__c</fullName>
+        <label>Primary Contact First Name</label>
+        <length>80</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Contact_Last_Name__c</fullName>
+        <label>Primary Contact Last Name</label>
+        <length>80</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Contact_Title__c</fullName>
+        <label>Primary Contact Title</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Contact_Email__c</fullName>
+        <label>Primary Contact Email</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Contact_Phone__c</fullName>
+        <label>Primary Contact Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    
+    <!-- Portal Access -->
+    <fields>
+        <fullName>Portal_Username__c</fullName>
+        <label>Portal Username</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Portal_Access_Enabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Portal Access Enabled</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Last_Portal_Login__c</fullName>
+        <label>Last Portal Login</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    
+    <!-- KYC/Onfido for Primary Contact -->
+    <fields>
+        <fullName>KYC_Status__c</fullName>
+        <label>Primary Contact KYC Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Started</fullName>
+                    <default>true</default>
+                    <label>Not Started</label>
+                </value>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>In Review</fullName>
+                    <default>false</default>
+                    <label>In Review</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Onfido_Applicant_ID__c</fullName>
+        <label>Onfido Applicant ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Onfido_Check_ID__c</fullName>
+        <label>Onfido Check ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Onfido_Check_Result__c</fullName>
+        <label>Onfido Check Result</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Clear</fullName>
+                    <default>false</default>
+                    <label>Clear</label>
+                </value>
+                <value>
+                    <fullName>Consider</fullName>
+                    <default>false</default>
+                    <label>Consider</label>
+                </value>
+                <value>
+                    <fullName>Unidentified</fullName>
+                    <default>false</default>
+                    <label>Unidentified</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Onfido_Check_Date__c</fullName>
+        <label>Onfido Check Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    
+    <!-- Social Handles -->
+    <fields>
+        <fullName>Twitter_Handle__c</fullName>
+        <label>Twitter/X Handle</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Facebook_URL__c</fullName>
+        <label>Facebook URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>LinkedIn_URL__c</fullName>
+        <label>LinkedIn URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Instagram_Handle__c</fullName>
+        <label>Instagram Handle</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Vetting Status -->
+    <fields>
+        <fullName>Vetting_Status__c</fullName>
+        <label>Vetting Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Application</fullName>
+                    <default>true</default>
+                    <label>New Application</label>
+                </value>
+                <value>
+                    <fullName>Documents Pending</fullName>
+                    <default>false</default>
+                    <label>Documents Pending</label>
+                </value>
+                <value>
+                    <fullName>Under Review</fullName>
+                    <default>false</default>
+                    <label>Under Review</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>On Hold</fullName>
+                    <default>false</default>
+                    <label>On Hold</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Vetting_Notes__c</fullName>
+        <label>Vetting Notes</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Vetting_Completed_Date__c</fullName>
+        <label>Vetting Completed Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    
+    <!-- Wallet for Grant Disbursement -->
+    <fields>
+        <fullName>Disbursement_Wallet_Address__c</fullName>
+        <label>Disbursement Wallet Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Disbursement_Wallet_Network__c</fullName>
+        <label>Disbursement Wallet Network</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>JIL</fullName>
+                    <default>true</default>
+                    <label>JIL</label>
+                </value>
+                <value>
+                    <fullName>Ethereum</fullName>
+                    <default>false</default>
+                    <label>Ethereum</label>
+                </value>
+                <value>
+                    <fullName>USDC</fullName>
+                    <default>false</default>
+                    <label>USDC</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    
+    <!-- Aggregates -->
+    <fields>
+        <fullName>Total_Grants_Received__c</fullName>
+        <label>Total Grants Received (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>true</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Active_Projects_Count__c</fullName>
+        <label>Active Projects Count</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <label>Notes</label>
+        <length>32768</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+
+    <!-- ============================================ -->
+    <!-- VALIDATION RULES                             -->
+    <!-- ============================================ -->
+
+    <!-- EIN format: XX-XXXXXXX (2 digits, hyphen, 7 digits) -->
+    <validationRules>
+        <fullName>EIN_Format_Validation</fullName>
+        <active>true</active>
+        <description>Validates EIN (Employer Identification Number) format. Must be exactly 9 digits in XX-XXXXXXX format with hyphen. Only fires for US-based org types that require an EIN.</description>
+        <errorConditionFormula>AND(
+    NOT(ISBLANK(EIN__c)),
+    OR(
+        ISPICKVAL(Organization_Type__c, "501(c)(3) Nonprofit"),
+        ISPICKVAL(Organization_Type__c, "501(c)(4) Social Welfare")
+    ),
+    NOT(REGEX(EIN__c, "^[0-9]{2}-[0-9]{7}$"))
+)</errorConditionFormula>
+        <errorDisplayField>EIN__c</errorDisplayField>
+        <errorMessage>EIN must be in XX-XXXXXXX format (e.g., 12-3456789). Please enter the 9-digit Employer Identification Number with a hyphen after the first two digits.</errorMessage>
+    </validationRules>
+
+    <!-- Require EIN for US nonprofit types -->
+    <validationRules>
+        <fullName>EIN_Required_For_US_Nonprofits</fullName>
+        <active>true</active>
+        <description>Requires EIN when organization type is 501(c)(3) or 501(c)(4) and vetting status has moved beyond New Application.</description>
+        <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(Organization_Type__c, "501(c)(3) Nonprofit"),
+        ISPICKVAL(Organization_Type__c, "501(c)(4) Social Welfare")
+    ),
+    NOT(ISPICKVAL(Vetting_Status__c, "New Application")),
+    ISBLANK(EIN__c)
+)</errorConditionFormula>
+        <errorDisplayField>EIN__c</errorDisplayField>
+        <errorMessage>EIN is required for 501(c)(3) and 501(c)(4) organizations once vetting has begun. Please provide the organization's Employer Identification Number.</errorMessage>
+    </validationRules>
+
+    <!-- Primary Contact Email format validation -->
+    <validationRules>
+        <fullName>Primary_Contact_Email_Format</fullName>
+        <active>true</active>
+        <description>Validates primary contact email format. Defense-in-depth beyond Salesforce Email type field.</description>
+        <errorConditionFormula>AND(
+    NOT(ISBLANK(Primary_Contact_Email__c)),
+    OR(
+        NOT(REGEX(Primary_Contact_Email__c, "^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$")),
+        CONTAINS(Primary_Contact_Email__c, ".."),
+        CONTAINS(Primary_Contact_Email__c, " ")
+    )
+)</errorConditionFormula>
+        <errorDisplayField>Primary_Contact_Email__c</errorDisplayField>
+        <errorMessage>Please enter a valid email address for the primary contact (e.g., name@example.com).</errorMessage>
+    </validationRules>
+
+    <!-- ============================================ -->
+    <!-- DUPLICATE RULES                              -->
+    <!-- ============================================ -->
+
+    <!-- 
+        IMPORTANT: Salesforce Duplicate Rules require separate metadata components.
+        Below are specifications for TWO duplicate matching strategies:
+        
+        MATCHING RULE 1: Grant_Recipient_EIN_Match
+        ============================================
+        Object: Grant_Recipient__c
+        Match criteria:
+          - EIN__c: Exact match
+        Description: Catches orgs with identical EIN (strongest duplicate signal)
+        
+        MATCHING RULE 2: Grant_Recipient_OrgName_Match
+        ============================================
+        Object: Grant_Recipient__c
+        Match criteria:
+          - Organization_Name__c: Fuzzy match (Salesforce standard fuzzy algorithm)
+          - Country__c: Exact match
+        Description: Catches orgs with similar names in the same country
+        
+        DUPLICATE RULE: Grant_Recipient_Duplicate
+        ============================================
+        Object: Grant_Recipient__c
+        Action on Create: Alert (allow save with warning)
+        Action on Edit: Alert
+        Matching Rules: Grant_Recipient_EIN_Match, Grant_Recipient_OrgName_Match
+        Alert text: "A Grant Recipient with this EIN or similar organization name 
+                     already exists. Please verify this is not a duplicate."
+        
+        To implement via CLI after org authentication:
+        1. Setup > Matching Rules > New > Grant_Recipient__c
+        2. Setup > Duplicate Rules > New > Grant_Recipient__c > attach matching rules
+        
+        OR create files:
+        - matchingRules/Grant_Recipient__c.matchingRule  (define both rules)
+        - duplicateRules/Grant_Recipient_Duplicate.duplicateRule
+    -->
+
+</CustomObject>

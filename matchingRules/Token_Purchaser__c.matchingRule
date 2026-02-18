@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <matchingRules>
+        <fullName>Token_Purchaser_Email_Match</fullName>
+        <label>Token Purchaser Email Match</label>
+        <description>Matches Token Purchaser records by exact email address (case-insensitive)</description>
+        <ruleStatus>Active</ruleStatus>
+        <matchingRuleItems>
+            <fieldName>Email__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+        </matchingRuleItems>
+    </matchingRules>
+</MatchingRules>
